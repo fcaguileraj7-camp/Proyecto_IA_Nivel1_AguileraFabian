@@ -1,3 +1,9 @@
-# Evidencias
+## Menú principal
 
-En esta carpeta se almacenan las capturas de pantalla y evidencias del funcionamiento del proyecto.
+![Menú principal](../evidencias/01_Menu_Principal.png)
+
+---
+
+## Gestión de Agenda
+
+![Agenda](../evidencias/02_Agenda_Nueva_Cita.png)
