@@ -147,7 +147,100 @@ Las capturas de funcionamiento del proyecto se encuentran en la carpeta:
 ```
 evidencias/
 ```
+## 📊 Nueva funcionalidad: Reporte de productividad por usuario
 
+Como parte de la evolución de AgendaBot, se incorporó una nueva opción dentro del menú **Reportes** que permite generar un resumen de productividad de los usuarios registrados en el sistema.
+
+### Acceso
+
+Desde Telegram:
+
+```text
+Menú principal
+└── 6. Reportes
+    └── 6. Productividad por usuario (reporte completo)
+```
+
+Al seleccionar esta opción, el bot informa que está generando el reporte y posteriormente envía un resumen de productividad directamente en el chat.
+
+### Información utilizada
+
+El reporte se construye leyendo la información almacenada en Google Sheets desde las siguientes hojas:
+
+- CITAS
+- TAREAS
+- LOGS
+- USUARIOS
+
+### Métricas calculadas
+
+Para cada usuario se calculan los siguientes indicadores:
+
+- Total de citas registradas.
+- Citas completadas.
+- Citas canceladas.
+- Total de tareas.
+- Tareas completadas.
+- Tareas pendientes.
+- Total de interacciones con el bot.
+
+Además, se presenta un resumen general con:
+
+- Usuario más activo.
+- Total de citas registradas.
+- Total de tareas registradas.
+- Total de interacciones con AgendaBot.
+
+### Validaciones implementadas
+
+Durante la generación del reporte se aplican las siguientes reglas:
+
+- Los registros incompletos son ignorados.
+- Los usuarios sin citas o tareas se muestran con valores en cero.
+- Los usuarios se presentan ordenados por su identificador de Telegram.
+- La consulta no modifica la información almacenada en Google Sheets.
+
+### Flujo de ejecución
+
+```text
+Telegram
+      │
+      ▼
+Menú Reportes
+      │
+      ▼
+Productividad por usuario
+      │
+      ▼
+Lectura de USUARIOS
+      │
+      ▼
+Lectura de CITAS
+      │
+      ▼
+Lectura de TAREAS
+      │
+      ▼
+Lectura de LOGS
+      │
+      ▼
+Cálculo de indicadores
+      │
+      ▼
+Generación del reporte
+      │
+      ▼
+Envío del reporte por Telegram
+```
+
+### Evidencias
+
+La implementación de esta funcionalidad se encuentra documentada en la carpeta **evidencias**, incluyendo:
+
+- Menú de Reportes actualizado.
+- Mensaje de inicio de generación del reporte.
+- Reporte de productividad mostrado en Telegram.
+- Registro de la ejecución en la hoja LOGS.
 ---
 
 # 👨‍💻 Autor
